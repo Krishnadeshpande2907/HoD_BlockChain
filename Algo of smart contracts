@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: MIT
+// ^ this ide gives warning
+
+pragma solidity ^0.8.0;
+
+contract Hackathon_Trial {
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require (msg.sender == owner, "nt owner");                  // checks if it is the owner or not
+        _;                                                          // continue
+    }
+    
+    function setOwner(address _newOwner) public onlyOwner{          //public = can be be used in the main function
+        require (_newOwner != address(0), "Invalid address");       // if this is correct then it moves forword [like break in many programs]
+        owner = _newOwner;
+    }
+
+    function ownerProperty() public onlyOwner {
+        //code
+    }
+
+    function anyoneCanAccess() public {
+        //code
+    }
+
+}
